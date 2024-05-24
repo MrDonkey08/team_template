@@ -1,0 +1,345 @@
+\documentclass[10pt, a4paper]{article} % template format
+
+% Language and font encodings
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times} % Times New Roman
+\usepackage{courier}
+
+%% Sets page size and margins
+\usepackage[margin=2.5cm, includefoot]{geometry}
+%\setlength{\columnsep}{0.17in} % page columns separation
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{array} % <-- add this line for m{} column type
+\usepackage[hidelinks]{hyperref} % hyperlinks support
+\usepackage{graphicx} % images support
+%\usepackage{listings} % codeblock support
+%\usepackage{smartdiagram} % diagrams support
+\usepackage[most]{tcolorbox} % callouts support
+%\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[dvipsnames, table, xcdraw]{xcolor} % Tables support
+%\usepackage{zed-csp} % cchemas support
+
+%% Formating
+\usepackage{authblk} % to add authors in maketitle
+%\usepackage{blindtext} % to gen filler text
+\usepackage[figurename=Fig.]{caption} % to change prefix of the image caption
+\usepackage{cite} % useful to compress multiple quotations into a single entry
+\usepackage{enumitem}
+\usepackage{fancyhdr} % to set page style
+\usepackage{indentfirst}
+%\usepackage{natbib}
+\usepackage{parskip} % remove first line tabulation
+\usepackage{setspace}
+\usepackage{titlesec}
+%\usepackage{titling} % to config maketitle
+
+%% Variables
+% Main images
+\newcommand{\logoUdg}{logo-udg.jpg}
+\newcommand{\logoCucei}{logo-cucei.jpg}
+
+% School data
+\newcommand{\universidad}{Universidad de Guadalajara}
+\newcommand{\cede}{Centro Universitario de Ciencias Exactas e Ingenierías}
+
+% Subject data
+\newcommand{\materia}{Seminario de Integración: Protocolos}
+\newcommand{\carrera}{Ingeniería en Computación}
+\newcommand{\division}{División de Tecnologías para la Integración CiberHumana}
+\newcommand{\theTitle}{Título del Proyecto}
+\newcommand{\profesor}{Profesor}
+\newcommand{\seccion}{Sección}
+\newcommand{\nrc}{NRC}
+\newcommand{\clave}{Clave}
+\newcommand{\startDate}{21 de mayo de 2024}
+
+% Author(s) data
+\newcommand{\theAuthor}{Nombre del líder del proyecto}
+\newcommand{\bAuthor}{nombre del segundo participante}
+\newcommand{\cAuthor}{nombre del tercer participante}
+\newcommand{\dAuthor}{nombre del asesor}
+
+\newcommand{\theAuthorCode}{A code}
+\newcommand{\bAuthorCode}{B code}
+\newcommand{\cAuthorCode}{C code}
+\newcommand{\dAuthorCode}{D code}
+
+\newcommand{\theAuthorMail}{first@mail.com}
+\newcommand{\bAuthorMail}{second@mail.com}
+\newcommand{\cAuthorMail}{third@mail.com}
+\newcommand{\dAuthorMail}{fourth@mail.com}
+
+% Authors titles
+\newcommand{\aTitutlo}{Ingeniero en Computación}
+\newcommand{\btitulo}{Ingeniero en Computación y Electrónica}
+\newcommand{\cTitulo}{Ingeniero en Biomédica}
+
+% Repo data
+\newcommand{\repositorio}{\url{https://github.com/Forajido24/ProyectoFinal}}
+\newcommand{\version}{1.0}
+\newcommand{\licencia}{Sin Licencia}
+
+%% Declaration
+\date{}
+\graphicspath{ {img/} }
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\renewcommand{\lstlistingname}{Código} % to change prefix of the code caption
+\renewcommand{\lstlistlistingname}{Índice de códigos} % to change listings index title
+
+%% Styles
+
+% Color declaration
+\definecolor{greenPortada}{HTML}{69A84F}
+\definecolor{LightGray}{gray}{0.9}
+\definecolor{codegreen}{rgb}{0, 0.6, 0}
+\definecolor{codegray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{codepurple}{rgb}{0.58, 0, 0.82}
+\definecolor{backcolour}{rgb}{0.95, 0.95, 0.92}
+
+% Hyperlinks
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=greenPortada,
+	urlcolor=greenPortada,
+	pdfpagemode=FullScreen,
+}
+
+\urlstyle{same}
+
+% Codeblocks
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%% Spacing
+\newcommand{\nl}{\par\vspace{0.4cm}}
+\renewcommand{\baselinestretch}{1.15} % Espaciado de línea anterior
+\setlength{\parskip}{6pt} % Espaciado de línea anterior
+\setlength{\parindent}{0pt} % Sangría
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{3pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{greenPortada}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{50pt} % Ajuste necesario para evitar warnings
+
+% Header
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{
+	\begin{minipage}[c][2cm][c]{1.3cm}
+		\begin{flushleft}
+			\includegraphics[width=5cm, height=1.4cm, keepaspectratio]{\logoUdg}
+		\end{flushleft}
+	\end{minipage}
+	\begin{minipage}[c][2cm][c]{0.5\textwidth} % Adjust the height as needed
+		\begin{flushleft}	
+		{\materia}
+		\end{flushleft}
+	\end{minipage}
+}
+\rhead{
+		\begin{minipage}[c][2cm][c]{0.4\textwidth} % Adjust the height as needed
+			\begin{flushright}
+				{\theTitle}
+			\end{flushright}
+		\end{minipage}
+		\begin{minipage}[c][2cm][c]{1.3cm}
+			\begin{flushright}
+				\includegraphics[width=5cm, height=1.4cm, keepaspectratio]{\logoCucei}
+			\end{flushright}
+		\end{minipage}
+}
+
+% Footer
+\fancyfoot{}
+\lfoot{\small\materia}
+\cfoot{\thepage} % Paginación
+\rfoot{\small Curso impartido por \profesor}
+
+%% Title
+\title{
+	\vspace*{-3cm}
+	\fontsize{24}{28.8}\selectfont \theTitle
+}
+\author{\theAuthor}
+\author{\bAuthor}
+\author{\cAuthor}
+\author{\dAuthor}
+
+\affil{\small
+	\textit{CENTRO UNIVERSITARIO DE CIENCIAS}\\
+	\textit{EXACTAS E INGENIERÍAS, (CUCEI, UDG)}
+}
+
+\affil{
+	\fontfamily{pcr}\selectfont
+	\theAuthorMail\\
+	\fontfamily{pcr}\selectfont
+	\bAuthorMail\\
+	\fontfamily{pcr}\selectfont
+	\cAuthorMail\\
+	\fontfamily{pcr}\selectfont
+	\dAuthorMail
+	\vspace*{-24pt}
+}
+\affil{}
+
+\begin{document}
+\setstretch{1} % Interlineado
+
+\begin{titlepage}
+	\newgeometry{margin=2.5cm, left=3cm, right=3cm} % change margin
+	\centering
+	%\vspace*{-2cm}
+	{\huge\textbf{\universidad}}\par\vspace{0.6cm}
+	{\LARGE{\cede}}\vfill
+
+	\begin{figure}[h]
+		\begin{minipage}[t]{0.45\textwidth}
+			\centering
+			\includegraphics[width=130px, height=160px, keepaspectratio]{\logoUdg}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.45\textwidth}
+			\centering
+			\includegraphics[width=130px, height=160px, keepaspectratio]{\logoCucei}
+		\end{minipage}
+	\end{figure}\vfill
+
+
+	\Large{
+		\division\vfill
+		\textbf{\carrera}\vfill
+		\textbf{\materia}\par\vspace{3pt}
+		\seccion\ - \clave\ - \nrc\vfill
+	}
+
+	\begin{figure}[h]
+		\centering
+		\begin{minipage}[t]{0.75\textwidth}
+			{\Large
+				\textbf{Integrantes:}\par\vspace{8pt}
+				\begin{itemize}
+					\item \theAuthor\ - \theAuthorCode
+					\item \bAuthor\ - \bAuthorCode
+					\item \cAuthor\ - \cAuthorCode
+					\item \dAuthor\ - \dAuthorCode
+				\end{itemize}
+			}
+		\end{minipage}
+	\end{figure}\vfill
+
+	{\LARGE{\textbf{\theTitle}}}\vfill
+	
+	\begin{tcolorbox}[colback=red!5!white, colframe=red!75!black]
+		\centering
+		Este documento contiene información sensible.\\
+		No debería ser impreso o compartido con terceras entidades.
+	\end{tcolorbox}\vfill
+	{\large \startDate}\par
+\end{titlepage}
+
+\restoregeometry % end changed margin
+
+%% Indexes
+\clearpage
+\tableofcontents
+
+\clearpage
+\listoffigures
+
+\clearpage
+\listoftables
+
+\clearpage
+\lstlistoflistings
+
+%% Main Title
+\maketitle
+
+%% Content
+This is an example LaTeX document showcasing various elements.
+
+\section{Images}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{example-image-a}
+	\caption{Example Image}
+	\label{fig:example}
+\end{figure}
+
+\section{Tables}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Column 1 & Column 2 \\
+		\hline
+		Item 1 & Description 1 \\
+		Item 2 & Description 2 \\
+		\hline
+	\end{tabular}
+	\caption{Example Table}
+	\label{tab:example}
+\end{table}
+
+\section{Enumerations}
+\begin{enumerate}
+	\item First item
+	\item Second item
+\end{enumerate}
+
+\section{Lists}
+\begin{itemize}
+	\item Item 1
+	\item Item 2
+\end{itemize}
+
+\section{Equations}
+\begin{equation}
+	\label{eq:example}
+	E = mc^2
+\end{equation}
+
+%% References
+
+\nocite{*} % to include uncited references of .bib file
+
+\clearpage
+\bibliographystyle{ieeetr}
+
+% generated from .bib file
+\bibliography{ref}
+
+% Manual
+\iffalse
+\begin{thebibliography}{9}
+	\bibitem{Ejemplo1} Autor1, A. (2022). Título del libro. Editorial.
+\end{thebibliography}
+\fi
+
+\end{document}
